@@ -1,7 +1,9 @@
 // Package user 存放用户 Model 相关逻辑
 package user
 
-import "G02-Go-API/models"
+import (
+	"G02-Go-API/app/models"
+)
 
 // User 用户模型
 type User struct {
