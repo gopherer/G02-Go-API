@@ -14,7 +14,8 @@ func init() {
 
 				// 数据库连接信息
 				"host":     config.Env("DB_HOST", "127.0.0.1"),
-				"database": config.Env("DB_DATABASE", "G02-Go-API"),
+				"port":     config.Env("DB_PORT", "3306"),
+				"database": config.Env("DB_DATABASE", "g02_go_api"),
 				"username": config.Env("DB_USERNAME", ""),
 				"password": config.Env("DB_PASSWORD", ""),
 				"charset":  "utf8mb4",
