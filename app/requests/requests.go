@@ -55,4 +55,5 @@ func validate(data interface{}, rules govalidator.MapData, message govalidator.M
 
 	// 开始验证
 	return govalidator.New(opts).ValidateStruct()
+
 }
