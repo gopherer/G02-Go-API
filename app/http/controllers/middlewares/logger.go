@@ -2,7 +2,7 @@
 package middlewares
 
 import (
-	helpers "G02-Go-API/pkg/helps"
+	"G02-Go-API/pkg/helpers"
 	"G02-Go-API/pkg/logger"
 	"bytes"
 	"github.com/gin-gonic/gin"

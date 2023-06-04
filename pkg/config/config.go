@@ -2,7 +2,7 @@
 package config
 
 import (
-	helpers "G02-Go-API/pkg/helps"
+	"G02-Go-API/pkg/helpers"
 	"github.com/spf13/cast"
 	viperlib "github.com/spf13/viper" // 自定义包名，避免与内置 viper 实例冲突
 	"os"

@@ -3,12 +3,12 @@ package bootstrap
 import (
 	"G02-Go-API/pkg/config"
 	"G02-Go-API/pkg/database"
+	"G02-Go-API/pkg/logger"
 	"errors"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 	"time"
 )
 
@@ -39,7 +39,7 @@ func SetupDB() {
 	}
 
 	// 连接数据库，并设置 GORM 的日志模式
-	database.Connect(dbConfig, logger.Default.LogMode(logger.Info))
+	database.Connect(dbConfig, logger.NewGormLogger())
 
 	// 设置最大连接数
 	database.SQLDB.SetMaxOpenConns(config.GetInt("database.mysql.max_open_connections"))
