@@ -1,11 +1,13 @@
 package main
 
 import (
+	"G02-Go-API/app/http/controllers/middlewares"
 	"G02-Go-API/bootstrap"
 	btsConfig "G02-Go-API/config"
 	"G02-Go-API/pkg/config"
 	"flag"
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -43,6 +45,10 @@ func main() {
 
 	// 初始化路由绑定
 	bootstrap.SetupRoute(router)
+
+	router.GET("/test_guest", middlewares.GuestJWT(), func(c *gin.Context) {
+		c.String(http.StatusOK, "Hello guest")
+	})
 
 	// 运行服务
 	err := router.Run(":" + config.Get("app.port"))
