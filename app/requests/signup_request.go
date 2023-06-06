@@ -26,17 +26,6 @@ func SignupPhoneExist(data interface{}, c *gin.Context) map[string][]string {
 		},
 	}
 
-	//// 配置初始化
-	//opts := govalidator.Options{
-	//	Data:          data,
-	//	Rules:         rules,
-	//	TagIdentifier: "valid", // 模型中的 Struct 标签标识符
-	//	Messages:      messages,
-	//}
-	//
-	//// 开始验证
-	//return govalidator.New(opts).ValidateStruct()
-
 	return validate(data, rules, messages)
 }
 
