@@ -3,9 +3,10 @@ package response
 
 import (
 	"G02-Go-API/pkg/logger"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
-	"net/http"
 )
 
 // JSON 响应 200 和 JSON 数据
@@ -18,7 +19,7 @@ func JSON(c *gin.Context, data interface{}) {
 func Success(c *gin.Context) {
 	JSON(c, gin.H{
 		"success": true,
-		"message": "操作成功",
+		"message": "操作成功！",
 	})
 }
 
@@ -38,6 +39,11 @@ func Created(c *gin.Context, data interface{}) {
 		"success": true,
 		"data":    data,
 	})
+}
+
+// CreatedJSON 响应 201 和 JSON 数据
+func CreatedJSON(c *gin.Context, data interface{}) {
+	c.JSON(http.StatusCreated, data)
 }
 
 // Abort404 响应 404，未传参 msg 时使用默认消息
