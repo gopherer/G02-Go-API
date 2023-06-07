@@ -2,6 +2,7 @@ package main
 
 import (
 	"G02-Go-API/app/cmd"
+	make2 "G02-Go-API/app/cmd/make"
 	"G02-Go-API/bootstrap"
 	btsConfig "G02-Go-API/config"
 	"G02-Go-API/pkg/config"
@@ -48,6 +49,7 @@ func main() {
 		cmd.CmdServe,
 		cmd.CmdKey,
 		cmd.CmdPlay,
+		make2.CmdMake,
 	)
 
 	// 配置默认运行 Web 服务
