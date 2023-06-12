@@ -1,7 +1,9 @@
 // Package seeders 存放数据填充文件
 package seeders
 
-import "G02-Go-API/pkg/seed"
+import (
+	"G02-Go-API/pkg/seed"
+)
 
 func Initialize() {
 
