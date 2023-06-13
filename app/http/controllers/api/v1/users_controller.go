@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"G02-Go-API/app/models/user"
 	"G02-Go-API/pkg/auth"
 	"G02-Go-API/pkg/response"
 	"github.com/gin-gonic/gin"
@@ -14,4 +15,10 @@ type UsersController struct {
 func (ctrl *UsersController) CurrentUser(c *gin.Context) {
 	userModel := auth.CurrentUser(c)
 	response.Data(c, userModel)
+}
+
+// Index 所有用户
+func (ctrl *UsersController) Index(c *gin.Context) {
+	data := user.All()
+	response.Data(c, data)
 }
