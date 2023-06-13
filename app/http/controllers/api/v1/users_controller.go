@@ -2,6 +2,7 @@ package v1
 
 import (
 	"G02-Go-API/app/models/user"
+	"G02-Go-API/app/requests"
 	"G02-Go-API/pkg/auth"
 	"G02-Go-API/pkg/response"
 	"github.com/gin-gonic/gin"
@@ -19,6 +20,11 @@ func (ctrl *UsersController) CurrentUser(c *gin.Context) {
 
 // Index 所有用户
 func (ctrl *UsersController) Index(c *gin.Context) {
+	request := requests.PaginationRequest{}
+	if ok := requests.Validate(c, &request, requests.Pagination); !ok {
+		return
+	}
+
 	data, pager := user.Paginate(c, 10)
 	response.JSON(c, gin.H{
 		"data":  data,
