@@ -2,6 +2,10 @@ package {{PackageName}}
 
 import (
     "G02-Go-API/pkg/database"
+    "G02-Go-API/pkg/app"
+    "G02-Go-API/pkg/paginator"
+
+    "github.com/gin-gonic/gin"
 )
 
 func Get(idstr string) ({{VariableName}} {{StructName}}) {
@@ -23,4 +27,14 @@ func IsExist(field, value string) bool {
     var count int64
     database.DB.Model({{StructName}}{}).Where("? = ?", field, value).Count(&count)
     return count > 0
+}
+func Paginate(c *gin.Context, perPage int) ({{VariableNamePlural}} []{{StructName}}, paging paginator.Paging) {
+    paging = paginator.Paginate(
+        c,
+        database.DB.Model({{StructName}}{}),
+        &{{VariableNamePlural}},
+        app.V1URL(database.TableName(&{{StructName}}{})),
+        perPage,
+    )
+    return
 }
