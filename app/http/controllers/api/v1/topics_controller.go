@@ -2,6 +2,7 @@ package v1
 
 import (
 	"G02-Go-API/app/models/topic"
+	"G02-Go-API/app/policies"
 	"G02-Go-API/app/requests"
 	"G02-Go-API/pkg/auth"
 	"G02-Go-API/pkg/response"
@@ -38,6 +39,11 @@ func (ctrl *TopicsController) Update(c *gin.Context) {
 	topicModel := topic.Get(c.Param("id"))
 	if topicModel.ID == 0 {
 		response.Abort404(c)
+		return
+	}
+
+	if ok := policies.CanModifyTopic(c, topicModel); !ok {
+		response.Abort403(c)
 		return
 	}
 
